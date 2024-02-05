@@ -7,6 +7,7 @@ public class Poligonos extends Figura  {
     private Quadrado quad;
     private Triangulo tri;
     private Losango lo;
+    private Trapezio tr ;
     Scanner teclado = new Scanner(System.in); // Meu input 
     private char perg; // Variavel Global
     
@@ -41,6 +42,14 @@ public class Poligonos extends Figura  {
     public void setLosango(Losango l) {
         this.lo = l;
     }
+    
+    public Trapezio getTrapezio() {
+        return this.tr;
+    }
+    
+    public void setTrapezio(Trapezio t) {
+        this.tr = t ;
+    }
 
     
     
@@ -48,7 +57,7 @@ public class Poligonos extends Figura  {
         System.out.println("========== ÁREA DOS POLIGONOS ==========");
         System.out.println("=========================================");
         System.out.println("Escolha o póligono que você deseja calcular a área "
-        + "\n[R] - Retângulo, [Q] - Quadrado, [T] - Triangulo ou [L] - Losângo");
+        + "\n[R] - Retângulo, [Q] - Quadrado, [T] - Triangulo ,[L] - Losângo ou [Z] - Trapézio");
         perg = teclado.next().toUpperCase().charAt(0); 
 
         
@@ -69,6 +78,10 @@ public class Poligonos extends Figura  {
         
         else if (perg == 'L') {
         this.getLosango().tipoPoligono(); 
+        }
+        
+        else if (perg == 'Z') {
+            this.getTrapezio().tipoPoligono();
         }
         
     }
@@ -108,6 +121,17 @@ public class Poligonos extends Figura  {
                 float dMenor = teclado.nextFloat();
                 this.getLosango().setDiagonalMenor(dMenor);
                 break;
+            case 'Z' :
+                System.out.println("Base Maior : ");
+                float bMaior = teclado.nextFloat();
+                this.getTrapezio().setBaseMaior(bMaior);
+                System.out.println("Base Menor : ");
+                float bMenor = teclado.nextFloat();
+                this.getTrapezio().setBaseMenor(bMenor);
+                System.out.println("Altura : ");
+                float alturaT = teclado.nextFloat();
+                this.getTrapezio().setAltura(alturaT);
+                break;
             default :
                 break;
         }
@@ -137,6 +161,10 @@ public class Poligonos extends Figura  {
         
         else if (perg == 'L') {
             return (this.getLosango().toString());
+        }
+        
+        else if (perg == 'Z') {
+            return (this.getTrapezio().toString());
         }
         
         else {
